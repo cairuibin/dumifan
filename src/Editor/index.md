@@ -15,7 +15,8 @@ import React from "react";
 import "antd/dist/antd.css";
 import PriceInput from './index.tsx'
 import { Form, Input, Button,message } from "antd";
-
+import RuibinButton from "../Button/index.tsx"
+console.log(RuibinButton)
 const _string=`<h1>声明文件原理：深入探究</h1>
                 <p>组织模块以提供你想要的API形式保持一致是比较难的。 比如，你可能想要这样一个模块，可以用或不用
                     <code>new</code>来创建不同的类型， 在不同层级上暴露出不同的命名类型， 且模块对象上还带有一些属性。
@@ -66,9 +67,10 @@ class Demo extends React.Component {
     const { getFieldDecorator } = this.props.form;
     return (
       <>
-      <Button type="primary" onClick={()=>{
+      <RuibinButton type="primary" onClick={()=>{
         this.asyncSetForm()
-      }}>点击设置值</Button>  
+      }}>点击设置值</RuibinButton>  
+    
       <hr/>
       <Form layout="inline" onSubmit={this.handleSubmit}>
         <Form.Item label="吃饭宝宝">
@@ -89,18 +91,17 @@ class Demo extends React.Component {
                     callback()
                   }
                 }}]
-          })(<PriceInput  
-          
-          placeholder="我是placeholderplaceholder"
-          options={{
-            maxLenth:2000
-          }}
+          })(<PriceInput   
+             placeholder="我是placeholderplaceholder"
+              options={{
+                maxLenth:2000
+              }}
           />)}
         </Form.Item>
         <Form.Item>
-          <Button type="primary" htmlType="submit">
+          <RuibinButton type="primary" htmlType="submit">
             确认提交
-          </Button>
+          </RuibinButton>
         </Form.Item>
       </Form>
       </>

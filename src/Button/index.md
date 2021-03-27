@@ -19,11 +19,11 @@ export default class Demo extends Component {
   render() {
     return (
       <div>
-        <RuibinButton/>
+        <RuibinButton></RuibinButton>
          &emsp;
-        <RuibinButton type="primary"/>
+        <RuibinButton type="primary"></RuibinButton>
        &emsp;
-         <RuibinButton type="primary"/>
+         <RuibinButton type="danger"> <div>吃饭</div></RuibinButton>
       </div>
     )
   }

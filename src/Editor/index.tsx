@@ -8,8 +8,8 @@ function PriceInput({ value = '', options = {
 }, onChange = () => { }, placeholder = "请输入" }, ref) {
 
   const [counter, setcounter] = useState(0)
-  const editorInstance = useRef();
-  const total = (arg) => {
+  const editorInstance:any = useRef();
+  const total = (arg:any) :any=> {
     const textValueLen = arg.toText().length
     if (textValueLen <= options.maxLenth) {
       onChange(arg)

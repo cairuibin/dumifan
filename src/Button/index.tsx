@@ -26,12 +26,13 @@ export default class RuibinButton extends Component<ITsExampleProps> {
       danger: 'danger'
     }
   }
+  fn=()=>{}
   render() {
     const { types } = this.state
-    const { type } = this.props;
+    const { type='default' ,onClick,children=type==="default"?"取消":"确定"} = this.props;
+    console.log(this.props)
     return (
-
-      <button className={`RuibinButton RuibinButton_${types[type]}`} > 确认</button>
+      <button onClick={onClick} className={`RuibinButton RuibinButton_${types[type]}`} >{children}</button>
 
     )
   }
