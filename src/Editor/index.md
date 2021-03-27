@@ -1,118 +1,117 @@
 ---
-title: 富文本编辑器
+title: 富文本
 nav: 
   path: /component
-  title: dfdf
+  title: 富文本
 group:
   path: /component
-  title: dfdf
+  title: 富文本
 ---
 
+## 富文本
+
 ````jsx
+import React from "react";
+import "antd/dist/antd.css";
+import PriceInput from './index.tsx'
+import { Form, Input, Button,message } from "antd";
 
-import React,{PureComponent } from 'react'
-import BraftEditor from 'braft-editor'
-import 'antd/dist/antd.css';
-import 'braft-editor/dist/index.css'
-import { Form, Input, Button } from 'antd'
-class PriceInput extends PureComponent {
-  constructor(props) {
-    super(props);
-    const value = props.value || '';
-    this.state = {
-         value:value
-    };
-  }
-  componentDidMount () {
-    // 异步设置编辑器内容
-    setTimeout(() => {
+const _string=`<h1>声明文件原理：深入探究</h1>
+                <p>组织模块以提供你想要的API形式保持一致是比较难的。 比如，你可能想要这样一个模块，可以用或不用
+                    <code>new</code>来创建不同的类型， 在不同层级上暴露出不同的命名类型， 且模块对象上还带有一些属性。
+                </p>
+                <p>阅读这篇指定后，你就会了解如果书写复杂的暴露出友好API的声明文件。 这篇指定针对于模块（UMD）库，因为它们的选择具有更高的可变性。
+                </p>
+                <h2>核心概念</h2>
+                <p>如果你理解了一些关于TypeScript是如何工作的核心概念， 那么你就能够为任何结构书写声明文件。
+                </p>
+                <h3>类型</h3>
+                <p>如果你正在阅读这篇指南，你可能已经大概了解TypeScript里的类型指是什么。 明确一下，
+                    <em>类型</em>通过以下方式引入：</p>
+                <ul>
+                    <li>类型别名声明（<code>type sn = number | string;</code>）</li>
+                    <li>接口声明（<code>interface I { x: number[]; }</code>）</li>
+                    <li>类声明（<code>class C { }</code>）</li>
+                    <li>枚举声明（<code>enum E { A, B, C }</code>）</li>
+                    <li>指向某个类型的<code>import</code>声明</li>
+                </ul>`
+
+
+class Demo extends React.Component {
+
+  handleSubmit = e => {
+    e.preventDefault();
+    setTimeout(()=>{
+      message.info('提交成功，请在控制台查看')
+      this.props.form.validateFields((err, values) => {
+      if (!err) {
+        console.log("values",values);
+        console.log(values.lailelaodi.toText())
+
+      }
+    })
+    })
+  };
+
+  asyncSetForm=()=>{
+      message.info("请等待两秒钟");
+     setTimeout(()=>{
       this.props.form.setFieldsValue({
-        contenteeee: BraftEditor.createEditorState('<p>Hello <b>World!</b></p>')
+        chifanbaobao:"异步的输入框值",
+        lailelaodi:_string
       })
-    }, 1000)
-
-  }
-  componentWillReceiveProps(nextProps) {
-    // Should be a controlled component.
-    console.log(this.props)
-
-    if ('value' in nextProps) {
-      const value = nextProps.value;
-      this.setState(value);
-    }
+   },2000)
   }
   render() {
-    const { size } = this.props;
-    const {value} = this.state;
-   console.log(value)
+    const { getFieldDecorator } = this.props.form;
     return (
-        <BraftEditor
-               value={value}
-                className="my-editor"
-                controls={this.props.controls}
-                placeholder="请输入正文内容"
-            />
+      <>
+      <Button type="primary" onClick={()=>{
+        this.asyncSetForm()
+      }}>点击设置值</Button>  
+      <hr/>
+      <Form layout="inline" onSubmit={this.handleSubmit}>
+        <Form.Item label="吃饭宝宝">
+          {getFieldDecorator("chifanbaobao", {
+            initialValue: '',
+            rules: [{ required: true,message:"请输入吃饭宝宝"}]
+          })(<Input placeholder="我是请输入吃饭宝宝placeholder" />)}
+        </Form.Item>
+        <Form.Item label="来了老弟">
+          {getFieldDecorator("lailelaodi", {
+            initialValue: '',
+            rules: [{ required: true,
+             validator: (_, value, callback) => {
+                  if(!value) callback('请输入内容');
+                  if (value.isEmpty()) {
+                    callback('请输入内容')
+                  } else {
+                    callback()
+                  }
+                }}]
+          })(<PriceInput  
+          
+          placeholder="我是placeholderplaceholder"
+          options={{
+            maxLenth:2000
+          }}
+          />)}
+        </Form.Item>
+        <Form.Item>
+          <Button type="primary" htmlType="submit">
+            确认提交
+          </Button>
+        </Form.Item>
+      </Form>
+      </>
     );
   }
 }
-class FormDemo extends React.Component {
 
-  handleSubmit = (event) => {
-    event.preventDefault() 
-   
-    this.props.form.validateFields((error, values) => {
-      console.log(values.contenteeee,'values.contenteeee')
-      if (!error) {
-        // const submitData = {
-        //   title: values.title,
-        //   content:  values.content.toHTML()// values.content.toRAW() // or values.content.toHTML()
-        // }
-        console.log(values,'values')
-      }
-    })
-
-  }
-  render () {
-    const { getFieldDecorator } = this.props.form
-    const controls = ['bold', 'italic', 'underline', 'text-color', 'separator', 'link', 'separator', 'media' ]
-    return (
-      <div className="demo-container">
-        <Form onSubmit={this.handleSubmit}>
-         
-          <Form.Item  label="文章正文">
-            {getFieldDecorator('contenteeee', {
-              validateTrigger: 'onBlur',
-              initialValue:BraftEditor.createEditorState('<p>Hello qwwwwwwwwwwwwwwwwwwwwwwwwwwwww<b>World!</b></p>'),
-              // valuePropName:'content',
-              rules: [{
-                required: true,
-                // validator: (_, value, callback) => {
-                //   if (value.isEmpty()) {
-                //     callback('请输入正文内容')
-                //   } else {
-                //     callback()
-                //   }
-                // }
-              }],
-            })(
-              <PriceInput controls={controls} {...this.props}/>
-            )}
-          </Form.Item>
-          <Form.Item >
-            <Button size="large" type="primary" htmlType="submit">提交</Button>
-          </Form.Item>
-        </Form>
-
-        
-      </div>
-    )
-
-  }
-
-}
-
-export default Form.create()(FormDemo)
-
-
+const WrappedDemo = Form.create( )(Demo);
+export default WrappedDemo
 
 ````
+
+
+

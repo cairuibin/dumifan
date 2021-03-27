@@ -1,0 +1,66 @@
+.RuibinButton {
+  display: inline-block;
+  padding: 4px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-weight: 600;
+}
+
+.RuibinButton_default {
+  background-color: #f5f5f5;
+  color: rgba(0,0,0,.85);
+
+}
+.RuibinButton_default:hover {
+  background-color: #f5f5f5;
+  border-color: #457bf0;
+  color: #457bf0;
+
+}
+
+.RuibinButton_default:active {
+  border: 1px solid #fff;
+  background-color: #f4f4f5;
+  border-color: #1456e6;
+}
+
+
+.RuibinButton_primary {
+  color: #fff;
+  background-color: #306be8;
+}
+
+.RuibinButton_primary:hover {
+  background-color: #457bf0;
+}
+
+.RuibinButton_primary:active {
+  border: 1px solid #fff;
+  background-color: #306be8;
+  border-color: #457bf0;
+}
+
+.RuibinButton_danger {
+  background-color: #f80606;
+  color: #fff;
+
+
+}
+.RuibinButton_danger:hover {
+  background-color: #fd060a;
+  border-color: #c90b0b;
+  color: #fff;
+
+}
+
+.RuibinButton_danger:active {
+  border: 1px solid #fff;
+  background-color: #ff1d1d;
+  border-color: #ff4d4f;
+}
