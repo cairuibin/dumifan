@@ -1,6 +1,6 @@
 ---
 title: 富文本
-nav: 
+nav:
   path: /component
   title: 富文本
 group:
@@ -10,14 +10,14 @@ group:
 
 ## 富文本
 
-````jsx
-import React from "react";
-import "antd/dist/antd.css";
-import PriceInput from './index.tsx'
-import { Form, Input, Button,message } from "antd";
-import RuibinButton from "../Button/index.tsx"
-console.log(RuibinButton)
-const _string=`<h1>声明文件原理：深入探究</h1>
+```jsx
+import React from 'react';
+import 'antd/dist/antd.css';
+import PriceInput from './index.tsx';
+import { Form, Input, Button, message } from 'antd';
+import RuibinButton from '../Button/index.tsx';
+console.log(RuibinButton);
+const _string = `<h1>声明文件原理：深入探究</h1>
                 <p>组织模块以提供你想要的API形式保持一致是比较难的。 比如，你可能想要这样一个模块，可以用或不用
                     <code>new</code>来创建不同的类型， 在不同层级上暴露出不同的命名类型， 且模块对象上还带有一些属性。
                 </p>
@@ -35,84 +35,88 @@ const _string=`<h1>声明文件原理：深入探究</h1>
                     <li>类声明（<code>class C { }</code>）</li>
                     <li>枚举声明（<code>enum E { A, B, C }</code>）</li>
                     <li>指向某个类型的<code>import</code>声明</li>
-                </ul>`
-
+                </ul>`;
 
 class Demo extends React.Component {
-
   handleSubmit = e => {
     e.preventDefault();
-    setTimeout(()=>{
-      message.info('提交成功，请在控制台查看')
+    setTimeout(() => {
+      message.info('提交成功，请在控制台查看');
       this.props.form.validateFields((err, values) => {
-      if (!err) {
-        console.log("values",values);
-        console.log(values.lailelaodi.toText())
-
-      }
-    })
-    })
+        if (!err) {
+          console.log('values', values);
+          console.log(values.lailelaodi.toText());
+        }
+      });
+    });
   };
 
-  asyncSetForm=()=>{
-      message.info("请等待两秒钟");
-     setTimeout(()=>{
+  asyncSetForm = () => {
+    message.info('请等待两秒钟');
+    setTimeout(() => {
       this.props.form.setFieldsValue({
-        chifanbaobao:"异步的输入框值",
-        lailelaodi:_string
-      })
-   },2000)
-  }
+        chifanbaobao: '异步的输入框值',
+        lailelaodi: _string,
+      });
+    }, 2000);
+  };
   render() {
     const { getFieldDecorator } = this.props.form;
     return (
       <>
-      <RuibinButton type="primary" onClick={()=>{
-        this.asyncSetForm()
-      }}>点击设置值</RuibinButton>  
-    
-      <hr/>
-      <Form layout="inline" onSubmit={this.handleSubmit}>
-        <Form.Item label="吃饭宝宝">
-          {getFieldDecorator("chifanbaobao", {
-            initialValue: '',
-            rules: [{ required: true,message:"请输入吃饭宝宝"}]
-          })(<Input placeholder="我是请输入吃饭宝宝placeholder" />)}
-        </Form.Item>
-        <Form.Item label="来了老弟">
-          {getFieldDecorator("lailelaodi", {
-            initialValue: '',
-            rules: [{ required: true,
-             validator: (_, value, callback) => {
-                  if(!value) callback('请输入内容');
-                  if (value.isEmpty()) {
-                    callback('请输入内容')
-                  } else {
-                    callback()
-                  }
-                }}]
-          })(<PriceInput   
-             placeholder="我是placeholderplaceholder"
-              options={{
-                maxLenth:2000
-              }}
-          />)}
-        </Form.Item>
-        <Form.Item>
-          <RuibinButton type="primary" htmlType="submit">
-            确认提交
-          </RuibinButton>
-        </Form.Item>
-      </Form>
+        <RuibinButton
+          type="primary"
+          onClick={() => {
+            this.asyncSetForm();
+          }}
+        >
+          点击设置值
+        </RuibinButton>
+
+        <hr />
+        <Form layout="inline" onSubmit={this.handleSubmit}>
+          <Form.Item label="吃饭宝宝">
+            {getFieldDecorator('chifanbaobao', {
+              initialValue: '',
+              rules: [{ required: true, message: '请输入吃饭宝宝' }],
+            })(<Input placeholder="我是请输入吃饭宝宝placeholder" />)}
+          </Form.Item>
+          <Form.Item label="来了老弟">
+            {getFieldDecorator('lailelaodi', {
+              initialValue: '',
+              rules: [
+                {
+                  required: true,
+                  validator: (_, value, callback) => {
+                    if (!value) callback('请输入内容');
+                    if (value.isEmpty()) {
+                      callback('请输入内容');
+                    } else {
+                      callback();
+                    }
+                  },
+                },
+              ],
+            })(
+              <PriceInput
+                placeholder="我是placeholderplaceholder"
+                options={{
+                  maxLenth: 2000,
+                }}
+              />,
+            )}
+          </Form.Item>
+          <Form.Item>
+            <RuibinButton type="primary" htmlType="submit">
+              确认提交
+            </RuibinButton>
+          </Form.Item>
+        </Form>
       </>
     );
   }
 }
 
-const WrappedDemo = Form.create( )(Demo);
-export default WrappedDemo
-
-````
-
-
-
+const WrappedDemo = Form.create()(Demo);
+export default WrappedDemo;
+```

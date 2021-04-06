@@ -1,13 +1,19 @@
-import React, { Component } from 'react'
-import { ReactComponent as Scfdf } from './svg/fff.svg'
+import React, { Component } from 'react';
+import * as RuibinIcon from './svg/index.js'
+
+
+
+console.log(RuibinIcon.Iconaa)
 
 export default class Icon extends Component {
   render() {
     return (
-      <div>
-        IconIconIconIconIconIconIconIconIconIconIconIconIconIcon
-        <Scfdf></Scfdf>
-      </div>
-    )
+      <span>
+        {Object.keys(RuibinIcon).map(V => {
+          const Icondom = RuibinIcon[V]
+          return < Icondom w={40} h={40} />
+        })}
+      </span>
+    );
   }
 }

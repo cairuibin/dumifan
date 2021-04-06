@@ -1,11 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 
 export default class RuiBin extends Component {
   render() {
-    return (
-      <div>
-        RuiBinRuiBinRuiBinRuiBinRuiBinRuiBinRuiBinRuiBin
-      </div>
-    )
+    return <div>RuiBinRuiBinRuiBinRuiBinRuiBinRuiBinRuiBinRuiBin</div>;
   }
 }

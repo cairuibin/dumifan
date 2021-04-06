@@ -11,20 +11,16 @@ group:
 ## 图标
 
 > 哈哈哈
-````jsx
-import React, { Component } from 'react'
 
-
+```jsx
+import React, { Component } from 'react';
+import FFF from './index.tsx'
 export default class Icon extends Component {
   render() {
-    return (
-      <div>
-        IconIconIconIconIconIconIconIconIconIconIconIconIconIcon
-
-      </div>
-    )
+    return <div>
+    
+    <FFF/>
+    </div>;
   }
 }
-
-
-````
+```

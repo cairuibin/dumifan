@@ -10,8 +10,8 @@ group:
 
 ### 右边的
 
-````tsx
-import React, { Component } from 'react'
+```tsx
+import React, { Component } from 'react';
 
 export default class RuiBin extends Component {
   render() {
@@ -22,9 +22,7 @@ export default class RuiBin extends Component {
         RuiBinRuiBinRuiBinRuiBinRuiBinRuiBinRuiBinRuiBin
         RuiBinRuiBinRuiBinRuiBinRuiBinRuiBinRuiBinRuiBin
       </div>
-    )
+    );
   }
 }
-
-
-````
+```

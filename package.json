@@ -3,7 +3,8 @@
   "name": "xiaopangzi",
   "version": "1.0.0",
   "scripts": {
-    "start": "dumi dev",
+    "addicon":"node ./addIcon.js RuibinIcon",
+    "start": "node ./addIcon.js RuibinIcon && dumi dev",
     "docs:build": "dumi build",
     "docs:deploy": "gh-pages -d docs-dist",
     "build": "father-build",
@@ -39,6 +40,10 @@
     "gh-pages": "^3.0.0",
     "lint-staged": "^10.0.7",
     "prettier": "^1.19.1",
+    "svg-sprite-loader": "^6.0.2",
+    "svgo-loader": "^3.0.0",
+    "webpack": "4.5.0",
+    "webpack-chain": "^6.5.1",
     "yorkie": "^2.0.0"
   }
 }
