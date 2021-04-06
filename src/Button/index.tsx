@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './index.css';
 interface ITsExampleProps {
   type: string;
+  onClick: any;
 }
 
 interface IState {
