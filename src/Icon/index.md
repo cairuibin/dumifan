@@ -19,7 +19,7 @@ import * as Icon from './index.tsx';
 export default class RuiBinIcon extends Component {
   copy = Icondom => {
     const textField = document.createElement('textarea');
-    textField.innerText = `<${Icondom} w={40} h={40}/>`;
+    textField.innerText = `<Z.${Icondom} w={40} h={40}/>`;
     document.body.appendChild(textField);
     textField.select();
     document.execCommand('copy');

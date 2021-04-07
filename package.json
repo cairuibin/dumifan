@@ -1,7 +1,7 @@
 {
   "private": false,
   "name": "xiaopangzi",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "scripts": {
     "addicon":"node ./addIcon.js RuibinIcon",
     "start": "node ./addIcon.js RuibinIcon && dumi dev",
