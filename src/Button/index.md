@@ -23,7 +23,6 @@ export default class Demo extends Component {
         <RuibinButton type="primary"></RuibinButton>
         &emsp;
         <RuibinButton type="danger">
-          {' '}
           <div>吃饭</div>
         </RuibinButton>
       </div>
